@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 
 # Add Repositories & Update
 sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf
@@ -23,6 +23,7 @@ wget https://raw.githubusercontent.com/PacketCipher/iran-iplist/main/direct_ip -
 wget https://raw.githubusercontent.com/PacketCipher/iran-iplist/main/direct_host -P /usr/share/passwall/rules/
 
 ### Install Services ###
+mkdir -p /usr/local/sbin
 # xray-installer service #
 cp services/xray-installer /etc/init.d/xray-installer
 chmod +x /etc/init.d/xray-installer
@@ -33,7 +34,6 @@ chmod +x /etc/init.d/xray-monitor
 cp scripts/xray-monitor.sh /usr/local/sbin/xray-monitor.sh
 chmod +x /usr/local/sbin/xray-monitor.sh
 /etc/init.d/xray-monitor enable
-
 
 # Finalizing
 reboot &
