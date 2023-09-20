@@ -1,0 +1,26 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=15
+PIDFILE=/var/run/xray-monitor.pid
+DAEMON=/usr/local/sbin/xray-monitor.sh
+
+start() {
+  echo "Starting xray-monitor..."
+  if [ -f "$PIDFILE" ]; then
+    echo "xray-monitor is already running."
+  else
+    $DAEMON &
+    echo $! > "$PIDFILE"
+  fi
+}
+
+stop() {
+  echo "Stopping xray-monitor..."
+  if [ -f "$PIDFILE" ]; then
+    kill $(cat "$PIDFILE")
+    rm "$PIDFILE"
+  else
+    echo "xray-monitor is not running."
+  fi
+}
