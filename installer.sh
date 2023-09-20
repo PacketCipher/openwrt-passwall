@@ -18,6 +18,10 @@ opkg install ipset ipt2socks iptables iptables-legacy iptables-mod-iprange \
 
 opkg install luci-app-passwall
 
+## Config Replace ##
+mv /etc/config/passwall /etc/config/passwall.bak
+cp configs/passwall.config /etc/config/passwall
+
 ## Iran IP Bypass ##
 wget -O /usr/share/passwall/rules/direct_ip https://raw.githubusercontent.com/PacketCipher/iran-iplist/main/direct_ip
 wget -O /usr/share/passwall/rules/direct_host https://raw.githubusercontent.com/PacketCipher/iran-iplist/main/direct_host
