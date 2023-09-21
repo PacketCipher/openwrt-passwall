@@ -27,17 +27,17 @@ wget -O /usr/share/passwall/rules/direct_ip https://raw.githubusercontent.com/Pa
 wget -O /usr/share/passwall/rules/direct_host https://raw.githubusercontent.com/PacketCipher/iran-iplist/main/direct_host
 
 ### Install Services ###
-mkdir -p /usr/local/sbin
 # xray-installer service #
 cp services/xray-installer /etc/init.d/xray-installer
 chmod +x /etc/init.d/xray-installer
 /etc/init.d/xray-installer enable
 # xray-monitor service #
-cp services/xray-monitor /etc/init.d/xray-monitor
-chmod +x /etc/init.d/xray-monitor
-cp scripts/xray-monitor.sh /usr/local/sbin/xray-monitor.sh
-chmod +x /usr/local/sbin/xray-monitor.sh
-/etc/init.d/xray-monitor enable
+# cp services/xray-monitor /etc/init.d/xray-monitor
+# chmod +x /etc/init.d/xray-monitor
+# mkdir -p /usr/local/sbin
+# cp scripts/xray-monitor.sh /usr/local/sbin/xray-monitor.sh
+# chmod +x /usr/local/sbin/xray-monitor.sh
+# /etc/init.d/xray-monitor enable
 
 # Finalizing
 reboot &

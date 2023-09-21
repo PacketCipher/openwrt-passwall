@@ -4,7 +4,7 @@ START=99  # Start order of the service (should be high to run it late in the boo
 SERVICE_USE_PID=1
 
 start() {
-    echo "Disabling Passwall"
+    echo "Stopping Passwall"
     /etc/init.d/passwall stop
 
     echo "Installing xray-core package into RAM..."
@@ -13,13 +13,11 @@ start() {
     for i in $(seq 1 3); do
         opkg update
         opkg -d ram install xray-core
-
-        echo "Restarting Passwall"
-        /etc/init.d/passwall restart
-
         # Check if the installation was successful
         if [ $? -eq 0 ]; then
             echo "xray-core installed successfully into RAM."
+            echo "Starting Passwall"
+            /etc/init.d/passwall start
             return 0
         else
             echo "Installation attempt $i failed. Retrying in 120 seconds..."
