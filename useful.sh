@@ -7,3 +7,13 @@ uci set network.lan.delegate='0'
 uci commit network
 
 /sbin/reload_config
+
+# # DNS-Over-HTTPS (Integrated with XRay)
+# opkg update
+# opkg install luci-app-https-dns-proxy
+# /etc/init.d/rpcd restart
+
+# # DnsCrypt
+# opkg update
+# opkg install luci-app-dnscrypt-proxy
+# /etc/init.d/rpcd restart
